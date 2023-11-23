@@ -79,7 +79,8 @@ target_sources(${target} ${public_or_interface}
 )
 
 add_library(${target}::${target} ALIAS ${target})
-target_include_directories(${target} ${public_or_interface} ${CMAKE_CURRENT_SOURCE_DIR}/inc)
+target_include_directories(${target} ${public_or_interface} $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc>
+                                                            $<INSTALL_INTERFACE:inc>)
 
 if(CVPLOT_HEADER_ONLY)
     target_compile_definitions(${target} INTERFACE CVPLOT_HEADER_ONLY)
