@@ -115,7 +115,7 @@ if(CVPLOT_WITH_EXAMPLES)
     add_subdirectory(examples)
 endif()
 
-#Install targets
+#Install and export targets
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/inc/${target}"
         DESTINATION include
         FILES_MATCHING
@@ -126,6 +126,8 @@ if(NOT CVPLOT_HEADER_ONLY)
             LIBRARY DESTINATION lib
             ARCHIVE DESTINATION lib)
 endif()
+
+install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets)
 
 
 
